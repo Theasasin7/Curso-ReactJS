@@ -1,4 +1,5 @@
 import React from 'react'
+import ItemCount from './ItemCount'
 
 
 export const Item = ({name, category, img, price}) => {
@@ -11,6 +12,7 @@ export const Item = ({name, category, img, price}) => {
                     <p className="flex justify-center text-white">{category}</p>
                     <p className="flex justify-center text-white text-sm">USD ${price}</p>
                     <button className="border-2 border-gray-900 bg-blue-400 font-semibold mx-10 rounded-full">Game Details</button>
+                    {/*<ItemCount />*/}
                 </div>
             </div>
         </div>
