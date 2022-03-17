@@ -1,8 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { Button } from '../helper/Button'
 import ItemCount from './ItemCount'
 
 
-export const Item = ({name, category, img, price}) => {
+export const Item = ({id, name, category, img, price}) => {
     return (
         <div className="flex flex-row justify-center">
             <div className="flex flex-col p-2 gap-2 bg-gray-500 m-5 border-2 border-gray-700">
@@ -11,7 +13,7 @@ export const Item = ({name, category, img, price}) => {
                     <h5 className="flex justify-center text-white font-semibold text-lg">{name}</h5>
                     <p className="flex justify-center text-white">{category}</p>
                     <p className="flex justify-center text-white text-sm">USD ${price}</p>
-                    <button className="border-2 border-gray-900 bg-blue-400 font-semibold mx-10 rounded-full">Game Details</button>
+                    <Link to={`/details/${id}`}><Button>Game Details</Button></Link>
                     <ItemCount stock="50" initial="1" />
                 </div>
             </div>
