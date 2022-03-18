@@ -1,7 +1,6 @@
-import React,{ useState } from 'react'
+import React from 'react'
 
-const ItemCount = ({ stock,initial }) => {
-    const [count,setCount] = useState(initial);
+const ItemCount = ({ stock, count, setCount, handleAdd}) => {
 
     const onAdd = (stock,initial)=>{
         return initial<stock ? setCount(initial + 1) : setCount(initial);
@@ -17,7 +16,7 @@ return (
                 {count}
                 <div onClick={()=>{onAdd(parseInt(stock),parseInt(count))}}>+</div>
             </div>
-            <button className="text-lg font-medium border-2 border-blue-500 bg-blue-400 rounded-full">Add to cart</button>
+            <button className="text-lg font-medium border-2 border-blue-500 bg-blue-400 rounded-full" onClick={handleAdd}>Add to cart</button>
         </div>
     </div>
     )
