@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const ItemCount = ({ stock, count, setCount, handleAdd}) => {
 
@@ -16,7 +17,7 @@ return (
                 {count}
                 <div onClick={()=>{onAdd(parseInt(stock),parseInt(count))}}>+</div>
             </div>
-            <button className="text-lg font-medium border-2 border-blue-500 bg-blue-400 rounded-full" onClick={handleAdd}>Add to cart</button>
+            <button className="text-lg font-medium border-2 w-full border-blue-500 bg-blue-400 rounded-full" onClick={handleAdd}>Add to cart</button>
         </div>
     </div>
     )
