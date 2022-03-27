@@ -1,19 +1,28 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Button } from '../helper/Button';
+import { CartContext } from './context/CartContext';
 import ItemCount from './ItemCount'
 
 export const ItemDetail = ({id, name, category, img, price, stock, initial}) => {
 
-    const [count,setCount] = useState(1);
+    const [count,setCount] = useState(0);
+    
+
+    const { addToCart, isInCart } = useContext(CartContext)
 
     const handleAdd = () => {
-        const itemToCart = {
+        if (count === 0) return
+
+        if (!isInCart(id)) {
+            const addItem = {
             id,
             name,
             price,
             img,
             count
+            }
+            addToCart(addItem)
         }
     }
     return (
@@ -26,7 +35,14 @@ export const ItemDetail = ({id, name, category, img, price, stock, initial}) => 
                         <p className="flex justify-center text-white">{category}</p>
                         <p className="flex justify-center text-white text-sm">USD ${price}</p>
                         <div className="flex justify-center"><Link to="/"><Button>Go back</Button></Link></div>
-                        <ItemCount stock={stock} initial={initial} count={count} setCount={setCount} handleAdd={handleAdd} />
+                        {
+                            isInCart(id)
+                            ? <div className="flex justify-center"><Link to="/cart"><Button>Proceed to checkout</Button></Link></div>
+
+                            :<>
+                            <ItemCount stock={stock} initial={initial} count={count} setCount={setCount} handleAdd={handleAdd} />
+                            </>
+                        }
                     </div>
                 </div>
             </div>
