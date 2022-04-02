@@ -49,11 +49,11 @@ export const Cart = () => {
 
                 <hr/>
                 <div className="flex flex-col items-center">
-                    <h2 className="font-semibold text-2xl">Total: ${totalCart()}</h2>
+                    <h2 className="font-semibold text-2xl">Total: ${totalCart().toFixed(2)}</h2>
 
                     <div className="w-60">
                         <button className="text-lg font-medium border-2 w-full border-gray-900 bg-blue-400 rounded-full" onClick={emptyCart}>Empty Cart</button>
-                        <button className="text-lg font-medium border-2 w-full border-gray-900 bg-blue-400 rounded-full">Proceed to checkout</button>
+                        <Link to="/checkout"><button className="text-lg font-medium border-2 w-full border-gray-900 bg-blue-400 rounded-full">Proceed to checkout</button></Link>
                     </div>
                 </div>
             </div>
